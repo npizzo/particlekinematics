@@ -2,14 +2,13 @@
 cd /Users/npizzo/Documents/Research/ParticleKinematics/DLS_proj/
 %
 N = 512;
-niv = N;
 ML = 2*pi;
 wl = 2*pi;
 g = 1; 
 xi = 0:1/N:1-1/N; 
 x=xi;
 % a=0.275;
-a=0.5;
+a=1;
 y=a*cos(2*pi*xi);
 f=a*sin(2*pi*xi);
 xi2= 0:max(xi)/(N-1):max(xi);
