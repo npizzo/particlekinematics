@@ -467,7 +467,7 @@ C      if (mod(ii,10).eq.0) then
        OPEN(61,file=fname,form='formatted')
        WRITE(61,*) (f(i),i=1,n)        
 C      print*, ii   
-       print*, t
+C      print*, t
        WRITE(fname,'(A,F0.4,F0.3,F0.3,A)') 't.txt'
        OPEN(59,file=fname,form='formatted')
        WRITE(59,*) (t,i=1,n)
