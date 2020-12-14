@@ -14,7 +14,9 @@
 #source /opt/intel/bin/compilervars.sh intel64
 
 
- /usr/local/bin/gfortran -framework accelerate -O2 -o dold dold.f
+ #/usr/local/bin/gfortran -framework accelerate -O2 -o dold dold.f
+ /usr/local/bin/gfortran -framework accelerate -std=legacy -Wno-implicit-interface -fno-align-commons -O2 -o dold dold.f
+ 
 ./dold
 
 

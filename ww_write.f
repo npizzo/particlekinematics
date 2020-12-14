@@ -12,7 +12,7 @@
 	  n=niv
 	  h=0d0
 C	  gty=1d0
-      gty=1d0 
+      gty=9.81d0 
 C     print*, gty
 C	  wl=8.0d0
 C     wl=50d0
