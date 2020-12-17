@@ -10,23 +10,25 @@ g = 9.81;
 k = (2*pi)^2/g; 
 % k=2*pi;
 w = sqrt(g*k); cg=g/2/w; 
-D=0.75;
-xb=15/D;
-tb=xb/cg;
-S=0.3;
-M=32;
-kn=zeros(M,1);
-wn=zeros(M,1);
-an=zeros(M,1);
-for i=1:M
-    kn(i)=k*(1+D*(i-M/2)/M);
-    wn(i)=sqrt(g*kn(i));
-    an(i)=S/kn(i)/M;
+tstart = cputime;
+for ii = 2
+D = 0.75;
+xb = 15 / D;
+tb = xb / cg;
+S = 0.1 + (ii-1)*0.1;
+M = 32;
+kn = zeros(M,1);
+wn = zeros(M,1);
+an = zeros(M,1);
+for i = 1 : M
+    kn(i) = k*(1+D*(i-M/2)/M);
+    wn(i) = sqrt(g*kn(i));
+    an(i) = S/kn(i)/M;
 end
 
-eta1=zeros(length(x),1);
-for i=1:M
-    eta1(:,1)=eta1(:,1)+an(i)*cos(kn(i)*(x'-xb)+wn(i)*tb);
+eta1 = zeros(length(x),1);
+for i = 1 : M
+    eta1(:,1) = eta1(:,1) + an(i)*cos(kn(i)*(x'-xb)+wn(i)*tb);
 end
 clf
 plot(x,eta1)
@@ -44,7 +46,7 @@ eta=zeros(1,length(x));
         eta(1,j) = sum(real(2*out(2:end).*exp(I*(2*pi*freq(2:end)*...
             (x(j)+30)))));
     end
-eps2=sum((abs(2*out(2:end)).*2.*pi.*freq(2:end)))
+eps2=sum((abs(2*out(2:end)).*2.*pi.*freq(2:end)));
 phi=zeros(1,length(x)); 
     for j=1:length(x)
         phi(1,j) = sum(imag(2*sqrt(g)*out(2:end)./...
@@ -63,7 +65,7 @@ f_f=phi;
 plot(x_f,y_f,'k')
 hold on
 plot(x_f,f_f,'r')
-%%
+%
 % delete k.txt
 save xc.txt x_f -ascii
 save yc.txt y_f -ascii
@@ -76,7 +78,7 @@ save C.txt BW -ascii
 save wl.txt wl -ascii 
 % save k.txt k -as
 unix('./run2.sh'); 
-%%
+%
 formatSpec='%f'; 
 fileID = fopen(['x.txt'], 'r');
 xout = fscanf(fileID,formatSpec);
@@ -106,8 +108,8 @@ end
 end
 xi=0:2*pi/N:2*pi*(1-1/N);
 dxi=abs(xi(2)-xi(1));
-%% need to create the structure 
-ii =1;
+% need to create the structure 
+% ii =1;
 data.x = x_o;
 data.y = y_o;
 data.p = p_o;
@@ -125,18 +127,18 @@ data.y_0 = y_f;
 data.f_0 = f_f;
 foc{ii,1} = data; 
 save('foc.mat', 'foc')
+ii
+cputime-tstart
+end 
 % save(filename, sprintf('a%d',ii))
 % save('foc' ,data ,datestr(now), '.mat');
 % D='data';
 % F=sprintf('%s_%s.mat',data, datestr(now));
 % save(fullfile(D,F))
 %%
-
-% for each run, we'll make a mat file with a structure that has
-%%
 clf
 set(gca,'fontsize',28)
-for i=1:1:length(t)
+for i=1:10:length(t)
 plot(x_o(:,i),y_o(:,i),'r')
 xlim([0 2*pi])
 ylim([-1e-2 1e-2]) 
