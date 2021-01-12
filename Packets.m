@@ -138,12 +138,13 @@ end
 %%
 clf
 set(gca,'fontsize',28)
-for i=1:10:length(t)
-plot(x_o(:,i),y_o(:,i),'r')
-xlim([0 2*pi])
-ylim([-1e-2 1e-2]) 
-pause(0.1)
-hold off
+for i=1:25:length(t)
+plot(x_o(:,i),100*y_o(:,i)+1/2*t(i),'r')
+
+% pause(0.1)
+hold on
+% xlim([0 2*pi])
+% ylim([-1e-2 1e-2]) 
 end
 % set(gca,'fontsize',28)
 xlabel('X','interpreter','latex')
