@@ -23,7 +23,7 @@ C     wl=1d0
 	  cs=-3.d0
 	  bd=0.d0
 C	  pts=5.80580340901728320
-      pts =0.5d0
+      pts =0.1d0
 C  tl=450.00000000000000 
       open(7,file='S.txt',action='read', status='old',iostat=ierrorx)
       read(7,*) eps
