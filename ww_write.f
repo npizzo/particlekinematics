@@ -2,7 +2,7 @@
       
       implicit double precision (a-h,o-z)
       integer niv
-      parameter(niv=1024/2)
+      parameter(niv=1024*2)
       common /profil/ x(niv),y(niv),f(niv),po(niv),po1(niv),
      *					po2(niv), 
      *                 gty,h,t,ym,enk,enp,ent,en0,dt,dtl,En,
@@ -18,7 +18,7 @@ C	  wl=8.0d0
 C     wl=50d0
 C     wl=1d0
 	  uv=0.d0 
-	  erp=1e-6
+	  erp=1e-7
 	  sm=15.d0
 	  cs=-3.d0
 	  bd=0.d0
